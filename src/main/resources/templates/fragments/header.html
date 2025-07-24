@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+
+<head>
+    <title th:fragment="title">Spring Boot CRUD</title>
+</head>
+<body>
+<div th:fragment="header">
+    <h1>Пользователи</h1>
+    <nav>
+        <a th:href="@{/users}">Главная</a> |
+        <a th:href="@{/users/new}">Добавить</a>
+    </nav>
+    <hr>
+</div>
+</body>
+</html>

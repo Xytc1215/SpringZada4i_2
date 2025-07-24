@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title layout:fragment="title">Ошибки валидации</title>
+</head>
+<body>
+<section layout:fragment="body">
+
+    <h2>Ошибки</h2>
+
+    <ul>
+        <li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
+        <li th:each="err : ${#fields.errors('email')}" th:text="${err}"></li>
+    </ul>
+
+    <a th:href="@{/users}">Назад</a>
+
+</section>
+</body>
+</html>

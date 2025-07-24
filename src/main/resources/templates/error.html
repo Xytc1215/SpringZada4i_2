@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title layout:fragment="title">Ошибка</title>
+</head>
+<body>
+<section layout:fragment="body">
+
+    <h2>Что-то пошло не так</h2>
+    <p th:text="${message} ?: 'Внутренняя ошибка сервера или страница не найдена.'"></p>
+
+    <a th:href="@{/users}">На главную</a>
+
+</section>
+</body>
+</html>

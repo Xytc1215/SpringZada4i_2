@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: content">
+<meta charset="UTF-8">
+
+<body>
+<h2>Ошибки валидации</h2>
+
+<ul>
+    <li th:each="err : ${#fields.errors('email')}" th:text="${err}"></li>
+    <li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
+</ul>
+
+<a th:href="@{/users}">Назад</a>
+</body>
+</html>

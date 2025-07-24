@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title th:text="${userRequest.id == null} ? 'Добавить пользователя' : 'Редактировать пользователя'"></title>
+</head>
+<body>
+
+<div layout:fragment="body">
+    <h2 th:text="${userRequest.id == null} ? 'Новый пользователь' : 'Редактирование пользователя'">Форма</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form th:action="${userRequest.id == null} ? @{/users} : @{/users/update/{id}(id=${userRequest.id})}"
+                  th:object="${userRequest}"
+                  method="post">
+
+                <input type="hidden" th:if="${userRequest.id != null}" th:field="*{id}" />
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Имя:</label>
+                    <input type="text" id="name" th:field="*{name}" class="form-control" th:errorclass="is-invalid" />
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" id="email" th:field="*{email}" class="form-control" th:errorclass="is-invalid" />
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" th:text="${userRequest.id == null} ? 'Сохранить' : 'Обновить'">Отправить</button>
+                <a th:href="@{/users}" class="btn btn-secondary">Отмена</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
